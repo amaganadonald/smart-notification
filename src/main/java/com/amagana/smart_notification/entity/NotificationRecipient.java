@@ -21,6 +21,9 @@ public class NotificationRecipient {
     private String phone;
     private String deviceId;
 
+    public NotificationRecipient() {
+    }
+
     public NotificationRecipient(Long id, Notification notificationId, String recipient, String email, String phone,
             String deviceId) {
         this.id = id;

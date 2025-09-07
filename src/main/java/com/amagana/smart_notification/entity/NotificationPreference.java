@@ -30,6 +30,9 @@ public class NotificationPreference {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public NotificationPreference() {
+    }
+
     public NotificationPreference(Long id, String userId, NotificationType type, boolean isEnabled,
             NotificationPriority priority, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
