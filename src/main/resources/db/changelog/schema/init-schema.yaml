@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-notification-type
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: db/changelog/schema/sql/notification_type.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
+  
+  - changeSet:
+      id: insert-notification-type 
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: db/changelog/schema/data/insert_notification_type.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
+
+  - changeSet:
+      id: create-notification
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: db/changelog/schema/sql/notification.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
+
+  - changeSet:
+      id: create-notification-recipient
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: db/changelog/schema/sql/notification_recipient.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
