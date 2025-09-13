@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -12,10 +12,10 @@ public class NotificationRecipient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "recipient_seq", sequenceName = "recipient_seq", allocationSize = 1)
+    @SequenceGenerator(name = "notification_recipient_id_seq", sequenceName = "notification_recipient_id_seq", allocationSize = 1)
     private Long id;
-    @OneToOne
-    private Notification notificationId;
+    @ManyToOne
+    private Notification notification;
     private String recipient;
     private String email;
     private String phone;
@@ -24,10 +24,10 @@ public class NotificationRecipient {
     public NotificationRecipient() {
     }
 
-    public NotificationRecipient(Long id, Notification notificationId, String recipient, String email, String phone,
+    public NotificationRecipient(Long id, Notification notification, String recipient, String email, String phone,
             String deviceId) {
         this.id = id;
-        this.notificationId = notificationId;
+        this.notification = notification;
         this.recipient = recipient;
         this.email = email;
         this.phone = phone;
@@ -43,12 +43,12 @@ public class NotificationRecipient {
     }
 
     // Getters and Setters
-    public Notification getNotificationId() {
-        return notificationId;
+    public Notification getNotification() {
+        return notification;
     }
 
-    public void setNotificationId(Notification notificationId) {
-        this.notificationId = notificationId;
+    public void setNotification(Notification notification) {
+        this.notification = notification;
     }
 
     public String getRecipient() {

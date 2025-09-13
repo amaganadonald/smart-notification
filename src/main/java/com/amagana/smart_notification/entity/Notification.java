@@ -1,17 +1,21 @@
 package com.amagana.smart_notification.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.amagana.smart_notification.enums.NotificationPriority;
 import com.amagana.smart_notification.enums.NotificationStatus;
 import com.amagana.smart_notification.enums.NotificationType;
+import com.amagana.smart_notification.transform.NotificationTypeConverter;
 
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
@@ -21,23 +25,28 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "notification_seq", sequenceName = "notification_seq", allocationSize= 1)
+    @SequenceGenerator(name = "notification_id_seq", sequenceName = "notification_id_seq", allocationSize= 1)
     private Long id;
     private String sender;
     private String subject;
     private String message;
-    @OneToOne
-    @Enumerated(EnumType.ORDINAL)
+    
+    @Convert(converter = NotificationTypeConverter.class)
     private NotificationType type;
-    @OneToOne
+
+    @Enumerated(EnumType.STRING)
     private NotificationPriority priority;
+    
     private LocalDateTime createdAt;
     private LocalDateTime sentAt;
+    @Enumerated(EnumType.STRING)
     private NotificationStatus status;
     private Boolean isRead;
     private Boolean isArchived;
     private LocalDateTime readAt;
     private LocalDateTime archivedAt;
+    @OneToMany(mappedBy = "notification")
+    private List<NotificationRecipient> recipients;
 
     public Notification() {
     }

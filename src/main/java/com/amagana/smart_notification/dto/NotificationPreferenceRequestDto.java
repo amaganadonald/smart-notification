@@ -2,6 +2,9 @@ package com.amagana.smart_notification.dto;
 
 import java.time.LocalDateTime;
 
-public record NotificationPreferenceRequestDto(String userId, Long type, String priority, Boolean isEnabled, LocalDateTime createdAt, LocalDateTime updatedAt) {
+import com.amagana.smart_notification.enums.NotificationPriority;
+import com.amagana.smart_notification.enums.NotificationType;
+
+public record NotificationPreferenceRequestDto(String userId, NotificationType type, NotificationPriority priority, Boolean isEnabled, LocalDateTime createdAt, LocalDateTime updatedAt) {
     
 }

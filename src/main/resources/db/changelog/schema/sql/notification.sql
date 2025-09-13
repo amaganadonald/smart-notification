@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS notification (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT PRIMARY KEY DEFAULT nextval('notification_id_seq'),
     sender VARCHAR(100) NOT NULL,
     subject VARCHAR(100),
     message TEXT NOT NULL,

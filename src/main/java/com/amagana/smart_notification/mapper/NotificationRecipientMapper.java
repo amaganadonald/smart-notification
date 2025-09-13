@@ -11,7 +11,8 @@ import com.amagana.smart_notification.entity.NotificationRecipient;
 @Mapper(componentModel = "spring")
 public interface NotificationRecipientMapper {
 
-    @Mapping(target = "notificationId", ignore = true)
+    @Mapping(target = "notification", ignore = true)
+    @Mapping(target = "id", ignore = true)
     NotificationRecipient notificationRecipientRequestDtoToNotificationRecipient(NotificationRecipirntRequestDto notificationRecipirntRequestDto);
 
     NotificationRecipientResponseDto notificationRecipientToNotificationRecipientResponseDto(NotificationRecipient notificationRecipient);

@@ -4,13 +4,15 @@ import java.time.LocalDateTime;
 
 import com.amagana.smart_notification.enums.NotificationPriority;
 import com.amagana.smart_notification.enums.NotificationType;
+import com.amagana.smart_notification.transform.NotificationTypeConverter;
 
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -18,15 +20,18 @@ public class NotificationPreference {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "preference_seq", sequenceName = "preference_seq", allocationSize = 1)
+    @SequenceGenerator(name = "notification_preference_id_seq", sequenceName = "notification_preference_id_seq", allocationSize = 1)
     private Long id;
     private String userId;
-    @OneToOne
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    
+    @Convert(converter = NotificationTypeConverter.class)
     private NotificationType type;
+
     private boolean isEnabled;
-    @OneToOne
+    
+    @Enumerated(EnumType.STRING)
     private NotificationPriority priority;
+    
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

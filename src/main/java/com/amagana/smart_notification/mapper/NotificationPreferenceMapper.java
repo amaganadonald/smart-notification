@@ -12,8 +12,11 @@ public interface NotificationPreferenceMapper {
 
    
     @Mapping(target = "type", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "enabled", source = "isEnabled")
     NotificationPreference notificationPreferenceRequestDtoToNotificationPreference(NotificationPreferenceRequestDto notificationPreferenceRequestDto);
 
+    @Mapping(target = "isEnabled", source = "enabled")
     NotificationPreferenceResponseDto notificationPreferenceToNotificationPreferenceResponseDto(NotificationPreference notificationPreference);
 
 }

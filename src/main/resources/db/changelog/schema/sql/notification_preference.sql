@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS notification_preference (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT PRIMARY KEY DEFAULT nextval('notification_preference_id_seq'),
     user_id BIGINT NOT NULL,
     type_id BIGINT NOT NULL,
     is_enabled BOOLEAN DEFAULT TRUE,

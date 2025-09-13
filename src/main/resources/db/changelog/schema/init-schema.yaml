@@ -1,21 +1,19 @@
 databaseChangeLog:
+
+  - changeSet:
+      id: create-sequences
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: sql/create_sequences.sql
+            relativeToChangelogFile: true
+
   - changeSet:
       id: create-notification-type
       author: Donald Amagana
       changes:
         - sqlFile:
-            path: db/changelog/schema/sql/notification_type.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
-            endDelimiter: ;
-  
-  - changeSet:
-      id: insert-notification-type 
-      author: Donald Amagana
-      changes:
-        - sqlFile:
-            path: db/changelog/schema/data/insert_notification_type.sql
+            path: sql/notification_type.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
@@ -26,7 +24,7 @@ databaseChangeLog:
       author: Donald Amagana
       changes:
         - sqlFile:
-            path: db/changelog/schema/sql/notification.sql
+            path: sql/notification.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
@@ -37,7 +35,18 @@ databaseChangeLog:
       author: Donald Amagana
       changes:
         - sqlFile:
-            path: db/changelog/schema/sql/notification_recipient.sql
+            path: sql/notification_recipient.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
+
+  - changeSet:
+      id: insert-notification-type 
+      author: Donald Amagana
+      changes:
+        - sqlFile:
+            path: data/insert_notification_type.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true

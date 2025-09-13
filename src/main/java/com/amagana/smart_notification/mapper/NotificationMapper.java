@@ -16,6 +16,7 @@ public interface NotificationMapper {
     @Mapping(target = "type", ignore = true)
     Notification notificationRequestDtoToNotification(NotificationRequestDto notificationRequestDto);
 
+    @Mapping(target = "recipients", ignore = true)
     NotificationResponseDto notificationToNotificationResponseDto(Notification notification);
     
 }
